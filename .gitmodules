@@ -1,6 +1,6 @@
 [submodule "tutorials/react-hooks"]
-	path = tutorials/react-hooks
+	path = react-hooks
 	url = https://github.com/jahedev/widgets
 [submodule "tutorials/jwt-auth-test"]
-	path = tutorials/jwt-auth-test
+	path = jwt-auth-test
 	url = https://github.com/jahedev/jwt-auth-test
