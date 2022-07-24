@@ -1,7 +1,5 @@
 # Password Generator
 
-
-
 import sys
 import random
 
@@ -19,16 +17,17 @@ upper_ascii = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 numeric_ascii = '1234567890'
 symbol_ascii = '!@#$%^&*'
 
-def generate_password(length, has_lower, has_upper, has_numeric, has_symbols):
+char_list = []
+
+def generate_char_list():
     char_list = []
     if options['lower']:  char_list += list(lower_ascii)
     if options['upper']:  char_list += list(upper_ascii)
     if options['symbol']: char_list += list(symbol_ascii)
-    
     random.shuffle(char_list)
-    
+
+def generate_password():
     pass_length = options['length']
-    
     password = ''
     
     for i in range(pass_length):
@@ -104,7 +103,8 @@ def parse_args(argv):
     
     # valid numeric password length
     if argv[1].isnumeric():
-        options['length'] = int(argv[1])
+        pass_length = int(argv[1])
+        options['length'] = pass_length if pass_length > 0 else options['length']
     else:
         sys.exit("error: a valid numeric password length must be provided")
             
@@ -124,9 +124,9 @@ if __name__ == '__main__':
         sys.exit(0)
         
     parse_args(sys.argv)
+    generate_char_list()
     
     for i in range(options['amount']):
-        print(generate_password(options['length'], options['lower'], \
-        options['upper'], options['numeric'], options['symbol']))
+        print(generate_password())
     print()
     
