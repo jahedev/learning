@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const db = require('./db');
 const authRoutes = require('./routes/authRoutes');
-const cookieParser = require('cookie-parser');
 const { requireAuth, checkUser } = require('./middleware/authMiddleware');
+const cookieParser = require('cookie-parser');
 const logger = require('./logger');
 
 /* --- CONFIGURATION --- */
