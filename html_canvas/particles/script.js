@@ -36,7 +36,7 @@ class Particle {
   constructor() {
     this.x = mouse.x;
     this.y = mouse.y;
-    this.size = Math.random() * 12 + 5; // 1 to 6
+    this.size = Math.random() * 15 + 1; // 1 to 6
     this.speedX = Math.random() * 3 - 1.5; // -1.5 to 1.5
     this.speedY = Math.random() * 3 - 1.5; // -1.5 to 1.5
     this.color = `hsl(${hue}, 100%, 50%)`;
@@ -54,6 +54,7 @@ class Particle {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
+    ctx.closePath();
     // ctx.stroke();
   }
 }
@@ -70,20 +71,21 @@ function handleParticles() {
     particlesArray[i].update();
     particlesArray[i].draw();
 
-    // for (let j = i; j < particlesArray.length; j++) {
-    //   const dx = particlesArray[i].x - particlesArray[j].x;
-    //   const dy = particlesArray[i].y - particlesArray[j].y;
-    //   const distance = Math.sqrt(dx * dx + dy * dy);
+    for (let j = 0; j < particlesArray.length; j++) {
+      const dx = particlesArray[i].x - particlesArray[j].x;
+      const dy = particlesArray[i].y - particlesArray[j].y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
 
-    //   if (distance < 100) {
-    //     ctx.beginPath();
-    //     ctx.strokeStyle = particlesArray[i].color;
-    //     ctx.lineWidth = particlesArray[i].size;
-    //     ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
-    //     ctx.moveTo(particlesArray[j].x, particlesArray[j].y);
-    //     ctx.stroke();
-    //   }
-    // }
+      if (distance < 100) {
+        ctx.beginPath();
+        ctx.strokeStyle = particlesArray[i].color;
+        ctx.lineWidth = 0.2;
+        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+        ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+        ctx.stroke();
+        ctx.closePath();
+      }
+    }
 
     if (particlesArray[i].size <= 0.3) {
       particlesArray.splice(i, 1);
@@ -133,7 +135,7 @@ function animate() {
   handleParticles();
   showFPS();
 
-  hue += 0.5;
+  hue += 7;
 
   window.requestAnimationFrame(() => {
     calcFPS();
@@ -141,4 +143,4 @@ function animate() {
   });
 }
 
-animate();
+// animate();
