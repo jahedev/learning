@@ -143,4 +143,4 @@ function animate() {
   });
 }
 
-// animate();
+animate();
