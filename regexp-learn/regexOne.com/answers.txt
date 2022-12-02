@@ -8,3 +8,36 @@ Any Non-digit character
 
 Lesson 2: The Dot
 (c|8|\?)...
+
+Lesson 3: Matching specific characters
+[cmf]an
+
+Lesson 4: Excluding specific characters
+[^b]og
+
+Lesson 5: Character ranges
+[A-Z][a-z]+
+
+Lesson 6: Catching some zzz's
+waz{2,}up
+
+Lesson 7: Mr. Kleene, Mr. Kleene
+a.*ab*c*
+
+Lesson 8: Characters optional
+\d+ files? found\?
+
+Lesson 9: All this whitespace
+\s+[a-z]+
+
+Lesson 10: Starting and ending
+^M[a-z]+: successful
+
+Lesson 11:
+^(file\w+)\.pdf$
+
+Lesson 12: Nested groups
+(([A-Z][a-z]{2}\s)([1-9][0-9]{3})$)
+
+Lesson 13: More group work
+^(\d+)x?(\d+)
