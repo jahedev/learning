@@ -3,7 +3,7 @@ const fs = require('fs')
 exports.reg_match = function (re = new RegExp(), text = '') {
   console.log('\nText  :', text)
   console.log('Regex :', re)
-  console.log('Match :', text.match(re))
+  console.log('Match :', text.match(re), '\n')
 }
 
 exports.read_file = function (filepath) {
