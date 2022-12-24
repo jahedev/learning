@@ -1,32 +1,45 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+
+import Button from './components/Button'
+import Card from './components/Card'
+import Content from './components/Content'
+import Footer from './components/Footer'
+import Info from './components/Info'
+
+import ImageHolder from './components/ImageHolder'
+
+import photo from './assets/photo.png'
+import ButtonHolder from './components/ButtonHolder'
+import { MailFilled } from '@ant-design/icons'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className='App w-screen h-screen pt-10 bg-gray-800 text-slate-200'>
+      <Card>
+        <ImageHolder image={photo} />
+        <div className='CardMain p-8'>
+          <Info
+            fullName='Laura Smith'
+            title='Frontend Developer'
+            website='laurasmith.website'
+          />
+          <ButtonHolder className='flex flex-col align-center justify-center'>
+            <Button icon='email' text='Email' />
+            <Button icon='linkedin' text='LinkedIn' />
+          </ButtonHolder>
+          <Content headerText='About'>
+            I am a frontend developer with a particular interest in making
+            things simple and automating daily tasks. I try to keep up with
+            security and best practices, and am always looking for new things to
+            learn.
+          </Content>
+          <Content headerText='Interests'>
+            Food expert. Music scholar. Reader. Internet fanatic. Bacon buff.
+            Entrepreneur. Travel geek. Pop culture ninja. Coffee fanatic.
+          </Content>
+        </div>
+        <Footer />
+      </Card>
     </div>
   )
 }
