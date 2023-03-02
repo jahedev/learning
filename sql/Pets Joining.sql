@@ -31,3 +31,22 @@ SELECT P.[Name] AS [Pet Name], O.[Name] AS [Owner Name]
 FROM Owners AS O
 RIGHT JOIN PETS AS P
 ON P.OwnerID = O.OwnerID
+
+------ INNER JOIN ------
+SELECT OwnerID, Pets.PetID, [Name], Kind, Gender, Age, ProcedureDate, ProcedureType, ProcedureSubCode
+FROM Pets 
+INNER JOIN ProceduresHistory AS History
+ON Pets.Petid = History.PetID
+ORDER BY OwnerID
+
+------ FULL OUTER JOIN ------
+SELECT OwnerID, Pets.PetID, [Name], Kind, Gender, Age, ProcedureDate, ProcedureType, ProcedureSubCode
+FROM Pets 
+FULL OUTER JOIN ProceduresHistory AS History
+ON Pets.Petid = History.PetID
+WHERE
+	OwnerId IS NOT NULL AND
+	ProcedureDate IS NOT NULL AND
+	ProcedureType IS NOT NULL AND
+	ProcedureSubCode IS NOT NULL
+ORDER BY OwnerID
