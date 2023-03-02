@@ -50,3 +50,28 @@ WHERE
 	ProcedureType IS NOT NULL AND
 	ProcedureSubCode IS NOT NULL
 ORDER BY OwnerID
+
+------ COMPLEX JOIN ------
+SELECT
+	P.PetID,
+	P.[Name],
+	P.Kind,
+	P.Gender,
+	P.Age,
+	P.OwnerID,
+	PH.ProcedureDate,
+	PH.ProcedureType,
+	PH.ProcedureSubCode,
+	PD.[Description],
+	PD.Price
+FROM Pets P
+INNER JOIN ProceduresHistory PH ON
+	P.PetID = PH.PetID
+	LEFT JOIN ProceduresDetails as PD ON
+		PH.ProcedureType = PD.ProcedureType AND
+		PH.ProcedureSubCode = PD.ProcedureSubCode
+
+------ CROSS JOIN ------
+SELECT *
+FROM Pets
+CROSS JOIN Owners
