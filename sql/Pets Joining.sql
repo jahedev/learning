@@ -18,3 +18,10 @@ FROM [Pets] AS P
 LEFT JOIN [Owners] AS O
 ON P.[OwnerID] = O.[OwnerID]
 WHERE LEFT(P.[Name], 1) = LEFT(O.[Name], 1)
+
+------ ALIAS FOR COLUMN NAME ------
+SELECT P.[Name] AS [Pet Name], O.[Name] [Owner Name]
+FROM Pets P
+LEFT JOIN Owners AS O
+ON P.OwnerID = O.OwnerID
+WHERE LEFT(P.[Name], 1) = LEFT(O.[Name], 1)
