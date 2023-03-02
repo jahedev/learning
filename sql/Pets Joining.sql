@@ -25,3 +25,9 @@ FROM Pets P
 LEFT JOIN Owners AS O
 ON P.OwnerID = O.OwnerID
 WHERE LEFT(P.[Name], 1) = LEFT(O.[Name], 1)
+
+------ RIGHT JOIN ------
+SELECT P.[Name] AS [Pet Name], O.[Name] AS [Owner Name]
+FROM Owners AS O
+RIGHT JOIN PETS AS P
+ON P.OwnerID = O.OwnerID
